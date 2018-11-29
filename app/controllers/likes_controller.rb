@@ -18,8 +18,8 @@ class LikesController < OpenReadController
 
   # POST /likes
   def create
-    # @like = Like.new(like_params)
-    @like = current_user.likes.new(like_params)
+    @like = Like.new(like_params)
+    # @like = current_user.likes.new(like_params)
 
     if @like.save
       render json: @like, status: :created, location: @like

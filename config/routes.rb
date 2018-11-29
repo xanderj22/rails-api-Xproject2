@@ -6,10 +6,13 @@ Rails.application.routes.draw do
   resources :examples, except: %i[new edit]
 
   # Custom routes
-  get '/likes/:id' => 'users#show'
+  post '/users/' => 'users#create'
+  patch '/users/:id' => 'users#update'
   get '/users/:id' => 'users#show'
-  get '/likes/' => 'users#index'
   get '/users/' => 'users#index'
+  delete '/users/:id' => 'users#destroy'
+  get '/likes/:id' => 'users#show'
+  get '/likes/' => 'users#index'
   post '/sign-up' => 'users#signup'
   post '/sign-in' => 'users#signin'
   delete '/sign-out' => 'users#signout'
