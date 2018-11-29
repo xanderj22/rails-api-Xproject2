@@ -1,8 +1,16 @@
 # frozen_string_literal: true
 
 class UsersController < ProtectedController
-  skip_before_action :authenticate, only: %i[signup signin]
+  skip_before_action :authenticate, only: %i[signup signin show index]
 
+  def show
+    # Test user show action in browser
+    render json: User.find(params[:id])
+  end
+
+  def index
+    render json: User.all
+  end
   # POST '/sign-up'
   def signup
     user = User.create(user_creds)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2) do
+ActiveRecord::Schema.define(version: 2018_11_28_215726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,15 +23,33 @@ ActiveRecord::Schema.define(version: 2) do
     t.index ["user_id"], name: "index_examples_on_user_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.text "interests"
+    t.text "five_fave_things"
+    t.text "personality_types"
+    t.string "gender_prefs"
+    t.text "searching_for"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "token", null: false
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "User_Name"
+    t.string "Location"
+    t.text "About"
+    t.string "Gender_Identity"
+    t.string "Preferred_Pronoun"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["token"], name: "index_users_on_token", unique: true
   end
 
   add_foreign_key "examples", "users"
+  add_foreign_key "likes", "users"
 end
