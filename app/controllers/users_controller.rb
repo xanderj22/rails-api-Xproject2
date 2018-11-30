@@ -1,7 +1,42 @@
 # frozen_string_literal: true
 
 class UsersController < ProtectedController
-  skip_before_action :authenticate, only: %i[signup signin]
+  skip_before_action :authenticate, only: %i[signup signin show index]
+
+  def create
+    @user = user.new(user_params)
+    # @user = current_user.users.new(user_params)
+
+    if @user.save
+      render json: @user, status: :created, location: @user
+    else
+      render json: @user.errors, status: :unprocessable_entity
+    end
+  end
+
+  def show
+    # Test user show action in browser
+    render json: User.find(params[:id])
+  end
+
+  def index
+    render json: User.all
+  end
+
+  # PATCH/PUT /users/1
+  def update
+    if @user.update(user_params)
+      render json: @user
+    else
+      render json: @user.errors, status: :unprocessable_entity
+    end
+  end
+
+  # DELETE /user/1
+  def destroy
+    @user.destroy
+    # head :no_content
+  end
 
   # POST '/sign-up'
   def signup
@@ -47,6 +82,10 @@ class UsersController < ProtectedController
   end
 
   private
+
+  def user_params
+    params.require(:user).permit(:id, :email, :User_Name, :Location, :About, :Gender_Identity, :Preferred_Pronoun)
+  end
 
   def user_creds
     params.require(:credentials)

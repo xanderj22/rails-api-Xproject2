@@ -1,0 +1,17 @@
+url "http://localhost:4741/users" \
+  --include \
+  --request POST \
+  --header "Authorization: Token token=${TOKEN}" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "user": {
+      "email": "'"${EMAIL}"'",
+      "User_Name": "'"${USER_NAME}"'",
+      "Location": "'"${LOCATION}"'",
+      "About": "'"${ABOUT}"'",
+      "Gender_Identity": "'"${GENDER_IDENTITY}"'",
+      "Preferred_Pronoun": "'"${PREFERRED_PRONOUN}"'"
+    }
+  }'
+
+echo

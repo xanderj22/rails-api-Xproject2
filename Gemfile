@@ -20,6 +20,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'rails-erd'
   gem 'listen', '~> 3.1.5'
   gem 'pry-rails', '~> 0.3.6'
   gem 'spring', '~> 2.0.2'
