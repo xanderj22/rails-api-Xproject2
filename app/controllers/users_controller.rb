@@ -17,7 +17,7 @@ class UsersController < ProtectedController
   def show
     # Test user show action in browser
     # if you just want to see your own user profile, change to render json: current_user
-    render json: User.find(params[:id])
+    render json: current_user  # (OR) User.find(params[:id])
   end
 
   def index
