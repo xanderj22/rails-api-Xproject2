@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ProtectedController
-  skip_before_action :authenticate, only: %i[signup signin show index]
+  skip_before_action :authenticate, only: %i[signup signin] # removed show and index
 
   #  def create
   #   @user = User.new(user_params)
@@ -17,7 +17,7 @@ class UsersController < ProtectedController
   def show
     # Test user show action in browser
     # if you just want to see your own user profile, change to render json: current_user
-    render json: current_user  # (OR) User.find(params[:id])
+    render json: current_user # (OR) User.find(params[:id])
   end
 
   def index
