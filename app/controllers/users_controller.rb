@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ProtectedController
-  skip_before_action :authenticate, only: %i[signup signin show index update]
+  skip_before_action :authenticate, only: %i[signup signin] # removed show and index
 
   #  def create
   #   @user = User.new(user_params)
@@ -16,7 +16,8 @@ class UsersController < ProtectedController
 
   def show
     # Test user show action in browser
-    render json: User.find(params[:id])
+    # if you just want to see your own user profile, change to render json: current_user
+    render json: current_user # (OR) User.find(params[:id])
   end
 
   def index
@@ -25,7 +26,7 @@ class UsersController < ProtectedController
 
   # PATCH/PUT /users/1
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     if @user.update(user_params)
       render json: @user
     else
@@ -35,8 +36,8 @@ class UsersController < ProtectedController
 
   # DELETE /user/1
   def destroy
-    @user.destroy
-    # head :no_content
+    current_user.destroy
+    head :no_content
   end
 
   # POST '/sign-up'

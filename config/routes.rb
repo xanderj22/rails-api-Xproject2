@@ -11,8 +11,11 @@ Rails.application.routes.draw do
   get '/users/:id' => 'users#show'
   get '/users/' => 'users#index'
   delete '/users/:id' => 'users#destroy'
-  get '/likes/:id' => 'users#show'
-  get '/likes/' => 'users#index'
+
+  #Resources (see above) does the following for me automatically (cuz it's a macro)
+  # get '/likes/:id' => 'likes#show'
+  # get '/likes/' => 'likes#index'
+
   post '/sign-up' => 'users#signup'
   post '/sign-in' => 'users#signin'
   delete '/sign-out' => 'users#signout'

@@ -2,6 +2,6 @@
 
 class User < ApplicationRecord
   include Authentication
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :examples
 end
