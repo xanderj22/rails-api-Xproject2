@@ -16,6 +16,7 @@ My process involved referencing WDI course materials, reviewing online resources
 
 My greatest struggles centered around storing and retrieving data, and figuring out how all of the front-end and back-end files were interacting.  
 
+
 User stories:
 
 -A user should be able to sign-up/create account with email and password.
@@ -35,11 +36,12 @@ User stories:
 -A user should be able to sign-out.
 
 
+
 Future versions and improvements might include:
 
-  -Better user experience (front end)
+-Better user experience (front end)
   
-  -Ability to store and retrieve user data based on user profile name/nickname
+-Ability to store and retrieve user data based on user profile name/nickname
   
 
 
